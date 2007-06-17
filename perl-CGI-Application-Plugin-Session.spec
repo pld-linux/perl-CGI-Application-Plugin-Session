@@ -1,17 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests	# do perform "make test"
-
+#
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	CGI
 %define		pnam	Application-Plugin-Session
-Summary:	CGI::Application::Plugin::Session
+Summary:	CGI::Application::Plugin::Session - CGI::Session support for CGI::Application
+Summary(pl.UTF-8):	CGI::Application::Plugin::Session - obsługa CGI::Session dla CGI::Application
 Name:		perl-CGI-Application-Plugin-Session
 Version:	1.02
 Release:	1
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/CGI/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	532eaa718148dde7648723df3ce79350
 URL:		http://search.cpan.org/dist/CGI-Application-Plugin-Session/
 BuildRequires:	perl-CGI-Application >= 3.21
@@ -23,8 +24,12 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-CGI::Application::Plugin::Session - add CGI::Session support
-to CGI::Application
+CGI::Application::Plugin::Session adds CGI::Session support to
+CGI::Application.
+
+%description -l pl.UTF-8
+CGI::Application::Plugin::Session dodaje obsługę CGI::Session do
+CGI::Application.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
@@ -49,5 +54,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README Changes
 %{perl_vendorlib}/CGI/Application/Plugin/*.pm
-#%{perl_vendorlib}/CGI/Application/Plugin/Session
 %{_mandir}/man3/*
